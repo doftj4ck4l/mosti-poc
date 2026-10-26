@@ -1,0 +1,24 @@
+{
+  "mismatch": {
+    "any_pct_overall_all": 50.6,
+    "any_pct_tvet": 60.5,
+    "any_pct_ipt": 35.4,
+    "vertical_pct_overall_all": 31.4,
+    "horizontal_pct_overall_all": 36.9,
+    "base_overall_all": 149384,
+    "graduan": 228680,
+    "bekerja": 156819
+  },
+  "masco": {
+    "years": 26,
+    "occupations": 10,
+    "pca_variance": 0.491,
+    "aggregate_2040": {
+      "supply": 202588,
+      "demand": 141403,
+      "gap": -61185
+    },
+    "deficit_count_2040": 5,
+    "surplus_count_2040": 5
+  }
+}

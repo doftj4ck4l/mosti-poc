@@ -1,0 +1,6 @@
+export const MENEGAK_COLOR = '#8b5cf6'
+export const MENDATAR_COLOR = '#eab308'
+export const DUAL_COLOR = '#f97316'
+export const MATCHED_COLOR = '#16a34a'
+export const UNMATCHED_COLOR = '#dc2626'
+export const ACCENT_COLOR = '#0ea5e9'
