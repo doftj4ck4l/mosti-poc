@@ -4,11 +4,13 @@ Rebuild of the MASTIC E&E workforce POC dashboards as a real admin application.
 
 - **Plan:** see [PLAN.md](./PLAN.md)
 - **Frontend:** `apps/web` — shadcn-admin (React 19 · Vite · TanStack Router/Query · Tailwind v4 · Recharts)
-- **Source data:** extracted from the two original HTML POC dashboards (in `~/Downloads/MOSTI POC`) into JSON modules:
+- **Source data:** extracted from the original POC files (in `~/Downloads/MOSTI POC`) into JSON modules:
+  - `apps/web/src/features/spm/data/spm-blob.json` — SPM 2018–2025: 95 subjects + national series with page-level provenance
+  - `apps/web/src/features/data-catalog/data/documents.json` — 15-document catalog (8 SPM reports + Foresight + BEM/MBOT)
   - `apps/web/src/features/mismatch/data/mismatch-blob.json` — SKPG 2018–2024 graduate mismatch (228,680 records)
   - `apps/web/src/features/supply-demand/data/masco-blob.json` — MASCO supply/demand 2015–2040, PCA + SARIMAX model params
 - **Engine (client-side for this phase):** `apps/web/src/lib/engine/` — faithful port of the original dashboard math (`calcScenarioIndex`, `scenarioForJob`, `requiredRate`, `balancedRate`, `interventionSeries`)
-- **Extraction tooling:** `tools/extract/extract.mjs` (rerun to regenerate JSON + verify golden numbers)
+- **Extraction tooling:** `tools/extract/extract.mjs`, `extract-spm.mjs` (rerun to regenerate JSON + verify golden numbers)
 
 ## Run
 
@@ -26,7 +28,9 @@ Sign in with any credentials (mock auth this phase); demo hint shown on the sign
 
 | Route | Screen |
 |---|---|
-| `/` | Overview (exec summary, aggregate chart, 2040 gap ranking) |
+| `/` | Overview — National Talent Chain (6 stages), 5-stage flow, 8-module grid |
+| `/analytics/spm` | **Prestasi SPM** — 95 subjects × 2018–2025, GPMP trends, heatmap, outcomes, participation, urban–rural |
+| `/data-sources` | **Sumber Data** — catalog, 15 documents, indicator dictionary, agency governance |
 | `/analytics/mismatch` | Graduate Mismatch — scope/group/measure filters via URL, 10+ cuts, top courses, TVET−IPT gap matrix |
 | `/analytics/supply-demand` | Supply & Demand — 10 MASCO + aggregate, 80% CI bands, forecast boundary, YoY table |
 | `/simulator/scenario` | Scenario Simulator — 6 macro sliders, presets, per-occupation impact table |

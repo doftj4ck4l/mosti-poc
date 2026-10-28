@@ -22,6 +22,7 @@ import { Route as AuthenticatedUsersIndexRouteImport } from './routes/_authentic
 import { Route as AuthenticatedSettingsIndexRouteImport } from './routes/_authenticated/settings/index'
 import { Route as AuthenticatedModelIndexRouteImport } from './routes/_authenticated/model/index'
 import { Route as AuthenticatedDataIndexRouteImport } from './routes/_authenticated/data/index'
+import { Route as AuthenticatedDataSourcesIndexRouteImport } from './routes/_authenticated/data-sources/index'
 import { Route as AuthenticatedSettingsNotificationsRouteImport } from './routes/_authenticated/settings/notifications'
 import { Route as AuthenticatedSettingsDisplayRouteImport } from './routes/_authenticated/settings/display'
 import { Route as AuthenticatedSettingsAppearanceRouteImport } from './routes/_authenticated/settings/appearance'
@@ -30,6 +31,7 @@ import { Route as AuthenticatedErrorsErrorRouteImport } from './routes/_authenti
 import { Route as AuthenticatedSimulatorScenarioIndexRouteImport } from './routes/_authenticated/simulator/scenario/index'
 import { Route as AuthenticatedSimulatorInterventionsIndexRouteImport } from './routes/_authenticated/simulator/interventions/index'
 import { Route as AuthenticatedAnalyticsSupplyDemandIndexRouteImport } from './routes/_authenticated/analytics/supply-demand/index'
+import { Route as AuthenticatedAnalyticsSpmIndexRouteImport } from './routes/_authenticated/analytics/spm/index'
 import { Route as AuthenticatedAnalyticsMismatchIndexRouteImport } from './routes/_authenticated/analytics/mismatch/index'
 
 const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
@@ -98,6 +100,12 @@ const AuthenticatedDataIndexRoute = AuthenticatedDataIndexRouteImport.update({
   path: '/data/',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const AuthenticatedDataSourcesIndexRoute =
+  AuthenticatedDataSourcesIndexRouteImport.update({
+    id: '/data-sources/',
+    path: '/data-sources/',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 const AuthenticatedSettingsNotificationsRoute =
   AuthenticatedSettingsNotificationsRouteImport.update({
     id: '/notifications',
@@ -146,6 +154,12 @@ const AuthenticatedAnalyticsSupplyDemandIndexRoute =
     path: '/analytics/supply-demand/',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
+const AuthenticatedAnalyticsSpmIndexRoute =
+  AuthenticatedAnalyticsSpmIndexRouteImport.update({
+    id: '/analytics/spm/',
+    path: '/analytics/spm/',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 const AuthenticatedAnalyticsMismatchIndexRoute =
   AuthenticatedAnalyticsMismatchIndexRouteImport.update({
     id: '/analytics/mismatch/',
@@ -167,11 +181,13 @@ export interface FileRoutesByFullPath {
   '/settings/appearance': typeof AuthenticatedSettingsAppearanceRoute
   '/settings/display': typeof AuthenticatedSettingsDisplayRoute
   '/settings/notifications': typeof AuthenticatedSettingsNotificationsRoute
+  '/data-sources/': typeof AuthenticatedDataSourcesIndexRoute
   '/data/': typeof AuthenticatedDataIndexRoute
   '/model/': typeof AuthenticatedModelIndexRoute
   '/settings/': typeof AuthenticatedSettingsIndexRoute
   '/users/': typeof AuthenticatedUsersIndexRoute
   '/analytics/mismatch/': typeof AuthenticatedAnalyticsMismatchIndexRoute
+  '/analytics/spm/': typeof AuthenticatedAnalyticsSpmIndexRoute
   '/analytics/supply-demand/': typeof AuthenticatedAnalyticsSupplyDemandIndexRoute
   '/simulator/interventions/': typeof AuthenticatedSimulatorInterventionsIndexRoute
   '/simulator/scenario/': typeof AuthenticatedSimulatorScenarioIndexRoute
@@ -189,11 +205,13 @@ export interface FileRoutesByTo {
   '/settings/appearance': typeof AuthenticatedSettingsAppearanceRoute
   '/settings/display': typeof AuthenticatedSettingsDisplayRoute
   '/settings/notifications': typeof AuthenticatedSettingsNotificationsRoute
+  '/data-sources': typeof AuthenticatedDataSourcesIndexRoute
   '/data': typeof AuthenticatedDataIndexRoute
   '/model': typeof AuthenticatedModelIndexRoute
   '/settings': typeof AuthenticatedSettingsIndexRoute
   '/users': typeof AuthenticatedUsersIndexRoute
   '/analytics/mismatch': typeof AuthenticatedAnalyticsMismatchIndexRoute
+  '/analytics/spm': typeof AuthenticatedAnalyticsSpmIndexRoute
   '/analytics/supply-demand': typeof AuthenticatedAnalyticsSupplyDemandIndexRoute
   '/simulator/interventions': typeof AuthenticatedSimulatorInterventionsIndexRoute
   '/simulator/scenario': typeof AuthenticatedSimulatorScenarioIndexRoute
@@ -214,11 +232,13 @@ export interface FileRoutesById {
   '/_authenticated/settings/appearance': typeof AuthenticatedSettingsAppearanceRoute
   '/_authenticated/settings/display': typeof AuthenticatedSettingsDisplayRoute
   '/_authenticated/settings/notifications': typeof AuthenticatedSettingsNotificationsRoute
+  '/_authenticated/data-sources/': typeof AuthenticatedDataSourcesIndexRoute
   '/_authenticated/data/': typeof AuthenticatedDataIndexRoute
   '/_authenticated/model/': typeof AuthenticatedModelIndexRoute
   '/_authenticated/settings/': typeof AuthenticatedSettingsIndexRoute
   '/_authenticated/users/': typeof AuthenticatedUsersIndexRoute
   '/_authenticated/analytics/mismatch/': typeof AuthenticatedAnalyticsMismatchIndexRoute
+  '/_authenticated/analytics/spm/': typeof AuthenticatedAnalyticsSpmIndexRoute
   '/_authenticated/analytics/supply-demand/': typeof AuthenticatedAnalyticsSupplyDemandIndexRoute
   '/_authenticated/simulator/interventions/': typeof AuthenticatedSimulatorInterventionsIndexRoute
   '/_authenticated/simulator/scenario/': typeof AuthenticatedSimulatorScenarioIndexRoute
@@ -239,11 +259,13 @@ export interface FileRouteTypes {
     | '/settings/appearance'
     | '/settings/display'
     | '/settings/notifications'
+    | '/data-sources/'
     | '/data/'
     | '/model/'
     | '/settings/'
     | '/users/'
     | '/analytics/mismatch/'
+    | '/analytics/spm/'
     | '/analytics/supply-demand/'
     | '/simulator/interventions/'
     | '/simulator/scenario/'
@@ -261,11 +283,13 @@ export interface FileRouteTypes {
     | '/settings/appearance'
     | '/settings/display'
     | '/settings/notifications'
+    | '/data-sources'
     | '/data'
     | '/model'
     | '/settings'
     | '/users'
     | '/analytics/mismatch'
+    | '/analytics/spm'
     | '/analytics/supply-demand'
     | '/simulator/interventions'
     | '/simulator/scenario'
@@ -285,11 +309,13 @@ export interface FileRouteTypes {
     | '/_authenticated/settings/appearance'
     | '/_authenticated/settings/display'
     | '/_authenticated/settings/notifications'
+    | '/_authenticated/data-sources/'
     | '/_authenticated/data/'
     | '/_authenticated/model/'
     | '/_authenticated/settings/'
     | '/_authenticated/users/'
     | '/_authenticated/analytics/mismatch/'
+    | '/_authenticated/analytics/spm/'
     | '/_authenticated/analytics/supply-demand/'
     | '/_authenticated/simulator/interventions/'
     | '/_authenticated/simulator/scenario/'
@@ -398,6 +424,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedDataIndexRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/data-sources/': {
+      id: '/_authenticated/data-sources/'
+      path: '/data-sources'
+      fullPath: '/data-sources/'
+      preLoaderRoute: typeof AuthenticatedDataSourcesIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/settings/notifications': {
       id: '/_authenticated/settings/notifications'
       path: '/notifications'
@@ -454,6 +487,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAnalyticsSupplyDemandIndexRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/analytics/spm/': {
+      id: '/_authenticated/analytics/spm/'
+      path: '/analytics/spm'
+      fullPath: '/analytics/spm/'
+      preLoaderRoute: typeof AuthenticatedAnalyticsSpmIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/analytics/mismatch/': {
       id: '/_authenticated/analytics/mismatch/'
       path: '/analytics/mismatch'
@@ -491,10 +531,12 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedSettingsRouteRoute: typeof AuthenticatedSettingsRouteRouteWithChildren
   AuthenticatedIndexRoute: typeof AuthenticatedIndexRoute
   AuthenticatedErrorsErrorRoute: typeof AuthenticatedErrorsErrorRoute
+  AuthenticatedDataSourcesIndexRoute: typeof AuthenticatedDataSourcesIndexRoute
   AuthenticatedDataIndexRoute: typeof AuthenticatedDataIndexRoute
   AuthenticatedModelIndexRoute: typeof AuthenticatedModelIndexRoute
   AuthenticatedUsersIndexRoute: typeof AuthenticatedUsersIndexRoute
   AuthenticatedAnalyticsMismatchIndexRoute: typeof AuthenticatedAnalyticsMismatchIndexRoute
+  AuthenticatedAnalyticsSpmIndexRoute: typeof AuthenticatedAnalyticsSpmIndexRoute
   AuthenticatedAnalyticsSupplyDemandIndexRoute: typeof AuthenticatedAnalyticsSupplyDemandIndexRoute
   AuthenticatedSimulatorInterventionsIndexRoute: typeof AuthenticatedSimulatorInterventionsIndexRoute
   AuthenticatedSimulatorScenarioIndexRoute: typeof AuthenticatedSimulatorScenarioIndexRoute
@@ -504,11 +546,13 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedSettingsRouteRoute: AuthenticatedSettingsRouteRouteWithChildren,
   AuthenticatedIndexRoute: AuthenticatedIndexRoute,
   AuthenticatedErrorsErrorRoute: AuthenticatedErrorsErrorRoute,
+  AuthenticatedDataSourcesIndexRoute: AuthenticatedDataSourcesIndexRoute,
   AuthenticatedDataIndexRoute: AuthenticatedDataIndexRoute,
   AuthenticatedModelIndexRoute: AuthenticatedModelIndexRoute,
   AuthenticatedUsersIndexRoute: AuthenticatedUsersIndexRoute,
   AuthenticatedAnalyticsMismatchIndexRoute:
     AuthenticatedAnalyticsMismatchIndexRoute,
+  AuthenticatedAnalyticsSpmIndexRoute: AuthenticatedAnalyticsSpmIndexRoute,
   AuthenticatedAnalyticsSupplyDemandIndexRoute:
     AuthenticatedAnalyticsSupplyDemandIndexRoute,
   AuthenticatedSimulatorInterventionsIndexRoute:

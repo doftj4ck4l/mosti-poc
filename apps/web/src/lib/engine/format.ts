@@ -8,6 +8,16 @@ export const fmt1 = (n: number | null | undefined) =>
     ? '—'
     : (Math.round(n * 10) / 10).toLocaleString('en-US')
 
+export const fmt2 = (n: number | null | undefined) =>
+  n === null || n === undefined || !Number.isFinite(n)
+    ? '—'
+    : (Math.round(n * 100) / 100).toFixed(2)
+
+export const fmt2Signed = (n: number | null | undefined) =>
+  n === null || n === undefined || !Number.isFinite(n)
+    ? '—'
+    : (n >= 0 ? '+' : '') + (Math.round(n * 100) / 100).toFixed(2)
+
 export const pct = (n: number | null | undefined) =>
   n === null || n === undefined || !Number.isFinite(n) ? '—' : (n >= 0 ? '+' : '') + fmt1(n) + '%'
 

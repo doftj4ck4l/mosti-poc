@@ -2,7 +2,9 @@ import {
   ChartLine,
   Database,
   Gauge,
+  GraduationCap,
   LayoutDashboard,
+  Library,
   ListChecks,
   Settings,
   SlidersHorizontal,
@@ -30,22 +32,33 @@ export const sidebarData: SidebarData = {
       ],
     },
     {
-      title: 'Analytics',
+      title: 'Evidence',
       items: [
         {
-          title: 'Graduate Mismatch',
-          url: '/analytics/mismatch',
-          icon: Users,
+          title: 'Prestasi SPM',
+          url: '/analytics/spm',
+          icon: GraduationCap,
+          badge: 'New',
         },
         {
-          title: 'Supply & Demand',
+          title: 'Supply & Demand E&E',
           url: '/analytics/supply-demand',
           icon: ChartLine,
         },
       ],
     },
     {
-      title: 'Simulator',
+      title: 'Diagnosis',
+      items: [
+        {
+          title: 'Graduate Mismatch',
+          url: '/analytics/mismatch',
+          icon: Users,
+        },
+      ],
+    },
+    {
+      title: 'Decision',
       items: [
         {
           title: 'Scenario Simulator',
@@ -60,17 +73,22 @@ export const sidebarData: SidebarData = {
       ],
     },
     {
-      title: 'Model & Data',
+      title: 'Knowledge',
       items: [
         {
-          title: 'Methodology & Diagnostics',
-          url: '/model',
-          icon: Gauge,
+          title: 'Sumber Data',
+          url: '/data-sources',
+          icon: Library,
         },
         {
           title: 'Data Explorer',
           url: '/data',
           icon: Database,
+        },
+        {
+          title: 'Methodology & Diagnostics',
+          url: '/model',
+          icon: Gauge,
         },
       ],
     },
