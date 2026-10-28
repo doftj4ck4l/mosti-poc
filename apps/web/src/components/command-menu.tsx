@@ -12,13 +12,16 @@ import {
   CommandList,
   CommandSeparator,
 } from '@/components/ui/command'
-import { sidebarData } from './layout/data/sidebar-data'
+import { getSidebarData } from './layout/data/sidebar-data'
+import { useLang } from '@/lib/i18n'
 import { ScrollArea } from './ui/scroll-area'
 
 export function CommandMenu() {
   const navigate = useNavigate()
   const { setTheme } = useTheme()
   const { open, setOpen } = useSearch()
+  const lang = useLang()
+  const sidebarData = getSidebarData(lang)
 
   const runCommand = React.useCallback(
     (command: () => unknown) => {

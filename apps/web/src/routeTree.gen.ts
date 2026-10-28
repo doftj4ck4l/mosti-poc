@@ -21,18 +21,28 @@ import { Route as AuthenticatedSettingsRouteRouteImport } from './routes/_authen
 import { Route as AuthenticatedUsersIndexRouteImport } from './routes/_authenticated/users/index'
 import { Route as AuthenticatedSettingsIndexRouteImport } from './routes/_authenticated/settings/index'
 import { Route as AuthenticatedModelIndexRouteImport } from './routes/_authenticated/model/index'
+import { Route as AuthenticatedForesightIndexRouteImport } from './routes/_authenticated/foresight/index'
 import { Route as AuthenticatedDataIndexRouteImport } from './routes/_authenticated/data/index'
 import { Route as AuthenticatedDataSourcesIndexRouteImport } from './routes/_authenticated/data-sources/index'
+import { Route as AuthenticatedAskMasticIndexRouteImport } from './routes/_authenticated/ask-mastic/index'
 import { Route as AuthenticatedSettingsNotificationsRouteImport } from './routes/_authenticated/settings/notifications'
 import { Route as AuthenticatedSettingsDisplayRouteImport } from './routes/_authenticated/settings/display'
 import { Route as AuthenticatedSettingsAppearanceRouteImport } from './routes/_authenticated/settings/appearance'
 import { Route as AuthenticatedSettingsAccountRouteImport } from './routes/_authenticated/settings/account'
 import { Route as AuthenticatedErrorsErrorRouteImport } from './routes/_authenticated/errors/$error'
+import { Route as AuthenticatedAnalyticsEandeRouteRouteImport } from './routes/_authenticated/analytics/eande/route'
 import { Route as AuthenticatedSimulatorScenarioIndexRouteImport } from './routes/_authenticated/simulator/scenario/index'
 import { Route as AuthenticatedSimulatorInterventionsIndexRouteImport } from './routes/_authenticated/simulator/interventions/index'
 import { Route as AuthenticatedAnalyticsSupplyDemandIndexRouteImport } from './routes/_authenticated/analytics/supply-demand/index'
 import { Route as AuthenticatedAnalyticsSpmIndexRouteImport } from './routes/_authenticated/analytics/spm/index'
+import { Route as AuthenticatedAnalyticsProfessionalIndexRouteImport } from './routes/_authenticated/analytics/professional/index'
 import { Route as AuthenticatedAnalyticsMismatchIndexRouteImport } from './routes/_authenticated/analytics/mismatch/index'
+import { Route as AuthenticatedAnalyticsImpakIndexRouteImport } from './routes/_authenticated/analytics/impak/index'
+import { Route as AuthenticatedAnalyticsI360IndexRouteImport } from './routes/_authenticated/analytics/i360/index'
+import { Route as AuthenticatedAnalyticsEandeIndexRouteImport } from './routes/_authenticated/analytics/eande/index'
+import { Route as AuthenticatedAnalyticsEandeSupplyDemandRouteImport } from './routes/_authenticated/analytics/eande/supply-demand'
+import { Route as AuthenticatedAnalyticsEandeStrengthRouteImport } from './routes/_authenticated/analytics/eande/strength'
+import { Route as AuthenticatedAnalyticsEandeMismatchRouteImport } from './routes/_authenticated/analytics/eande/mismatch'
 
 const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
   id: '/_authenticated',
@@ -95,6 +105,12 @@ const AuthenticatedModelIndexRoute = AuthenticatedModelIndexRouteImport.update({
   path: '/model/',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const AuthenticatedForesightIndexRoute =
+  AuthenticatedForesightIndexRouteImport.update({
+    id: '/foresight/',
+    path: '/foresight/',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 const AuthenticatedDataIndexRoute = AuthenticatedDataIndexRouteImport.update({
   id: '/data/',
   path: '/data/',
@@ -104,6 +120,12 @@ const AuthenticatedDataSourcesIndexRoute =
   AuthenticatedDataSourcesIndexRouteImport.update({
     id: '/data-sources/',
     path: '/data-sources/',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedAskMasticIndexRoute =
+  AuthenticatedAskMasticIndexRouteImport.update({
+    id: '/ask-mastic/',
+    path: '/ask-mastic/',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
 const AuthenticatedSettingsNotificationsRoute =
@@ -136,6 +158,12 @@ const AuthenticatedErrorsErrorRoute =
     path: '/errors/$error',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
+const AuthenticatedAnalyticsEandeRouteRoute =
+  AuthenticatedAnalyticsEandeRouteRouteImport.update({
+    id: '/analytics/eande',
+    path: '/analytics/eande',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 const AuthenticatedSimulatorScenarioIndexRoute =
   AuthenticatedSimulatorScenarioIndexRouteImport.update({
     id: '/simulator/scenario/',
@@ -160,11 +188,53 @@ const AuthenticatedAnalyticsSpmIndexRoute =
     path: '/analytics/spm/',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
+const AuthenticatedAnalyticsProfessionalIndexRoute =
+  AuthenticatedAnalyticsProfessionalIndexRouteImport.update({
+    id: '/analytics/professional/',
+    path: '/analytics/professional/',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 const AuthenticatedAnalyticsMismatchIndexRoute =
   AuthenticatedAnalyticsMismatchIndexRouteImport.update({
     id: '/analytics/mismatch/',
     path: '/analytics/mismatch/',
     getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedAnalyticsImpakIndexRoute =
+  AuthenticatedAnalyticsImpakIndexRouteImport.update({
+    id: '/analytics/impak/',
+    path: '/analytics/impak/',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedAnalyticsI360IndexRoute =
+  AuthenticatedAnalyticsI360IndexRouteImport.update({
+    id: '/analytics/i360/',
+    path: '/analytics/i360/',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedAnalyticsEandeIndexRoute =
+  AuthenticatedAnalyticsEandeIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => AuthenticatedAnalyticsEandeRouteRoute,
+  } as any)
+const AuthenticatedAnalyticsEandeSupplyDemandRoute =
+  AuthenticatedAnalyticsEandeSupplyDemandRouteImport.update({
+    id: '/supply-demand',
+    path: '/supply-demand',
+    getParentRoute: () => AuthenticatedAnalyticsEandeRouteRoute,
+  } as any)
+const AuthenticatedAnalyticsEandeStrengthRoute =
+  AuthenticatedAnalyticsEandeStrengthRouteImport.update({
+    id: '/strength',
+    path: '/strength',
+    getParentRoute: () => AuthenticatedAnalyticsEandeRouteRoute,
+  } as any)
+const AuthenticatedAnalyticsEandeMismatchRoute =
+  AuthenticatedAnalyticsEandeMismatchRouteImport.update({
+    id: '/mismatch',
+    path: '/mismatch',
+    getParentRoute: () => AuthenticatedAnalyticsEandeRouteRoute,
   } as any)
 
 export interface FileRoutesByFullPath {
@@ -176,17 +246,27 @@ export interface FileRoutesByFullPath {
   '/404': typeof errors404Route
   '/500': typeof errors500Route
   '/503': typeof errors503Route
+  '/analytics/eande': typeof AuthenticatedAnalyticsEandeRouteRouteWithChildren
   '/errors/$error': typeof AuthenticatedErrorsErrorRoute
   '/settings/account': typeof AuthenticatedSettingsAccountRoute
   '/settings/appearance': typeof AuthenticatedSettingsAppearanceRoute
   '/settings/display': typeof AuthenticatedSettingsDisplayRoute
   '/settings/notifications': typeof AuthenticatedSettingsNotificationsRoute
+  '/ask-mastic/': typeof AuthenticatedAskMasticIndexRoute
   '/data-sources/': typeof AuthenticatedDataSourcesIndexRoute
   '/data/': typeof AuthenticatedDataIndexRoute
+  '/foresight/': typeof AuthenticatedForesightIndexRoute
   '/model/': typeof AuthenticatedModelIndexRoute
   '/settings/': typeof AuthenticatedSettingsIndexRoute
   '/users/': typeof AuthenticatedUsersIndexRoute
+  '/analytics/eande/mismatch': typeof AuthenticatedAnalyticsEandeMismatchRoute
+  '/analytics/eande/strength': typeof AuthenticatedAnalyticsEandeStrengthRoute
+  '/analytics/eande/supply-demand': typeof AuthenticatedAnalyticsEandeSupplyDemandRoute
+  '/analytics/eande/': typeof AuthenticatedAnalyticsEandeIndexRoute
+  '/analytics/i360/': typeof AuthenticatedAnalyticsI360IndexRoute
+  '/analytics/impak/': typeof AuthenticatedAnalyticsImpakIndexRoute
   '/analytics/mismatch/': typeof AuthenticatedAnalyticsMismatchIndexRoute
+  '/analytics/professional/': typeof AuthenticatedAnalyticsProfessionalIndexRoute
   '/analytics/spm/': typeof AuthenticatedAnalyticsSpmIndexRoute
   '/analytics/supply-demand/': typeof AuthenticatedAnalyticsSupplyDemandIndexRoute
   '/simulator/interventions/': typeof AuthenticatedSimulatorInterventionsIndexRoute
@@ -205,12 +285,21 @@ export interface FileRoutesByTo {
   '/settings/appearance': typeof AuthenticatedSettingsAppearanceRoute
   '/settings/display': typeof AuthenticatedSettingsDisplayRoute
   '/settings/notifications': typeof AuthenticatedSettingsNotificationsRoute
+  '/ask-mastic': typeof AuthenticatedAskMasticIndexRoute
   '/data-sources': typeof AuthenticatedDataSourcesIndexRoute
   '/data': typeof AuthenticatedDataIndexRoute
+  '/foresight': typeof AuthenticatedForesightIndexRoute
   '/model': typeof AuthenticatedModelIndexRoute
   '/settings': typeof AuthenticatedSettingsIndexRoute
   '/users': typeof AuthenticatedUsersIndexRoute
+  '/analytics/eande/mismatch': typeof AuthenticatedAnalyticsEandeMismatchRoute
+  '/analytics/eande/strength': typeof AuthenticatedAnalyticsEandeStrengthRoute
+  '/analytics/eande/supply-demand': typeof AuthenticatedAnalyticsEandeSupplyDemandRoute
+  '/analytics/eande': typeof AuthenticatedAnalyticsEandeIndexRoute
+  '/analytics/i360': typeof AuthenticatedAnalyticsI360IndexRoute
+  '/analytics/impak': typeof AuthenticatedAnalyticsImpakIndexRoute
   '/analytics/mismatch': typeof AuthenticatedAnalyticsMismatchIndexRoute
+  '/analytics/professional': typeof AuthenticatedAnalyticsProfessionalIndexRoute
   '/analytics/spm': typeof AuthenticatedAnalyticsSpmIndexRoute
   '/analytics/supply-demand': typeof AuthenticatedAnalyticsSupplyDemandIndexRoute
   '/simulator/interventions': typeof AuthenticatedSimulatorInterventionsIndexRoute
@@ -227,17 +316,27 @@ export interface FileRoutesById {
   '/(errors)/500': typeof errors500Route
   '/(errors)/503': typeof errors503Route
   '/_authenticated/': typeof AuthenticatedIndexRoute
+  '/_authenticated/analytics/eande': typeof AuthenticatedAnalyticsEandeRouteRouteWithChildren
   '/_authenticated/errors/$error': typeof AuthenticatedErrorsErrorRoute
   '/_authenticated/settings/account': typeof AuthenticatedSettingsAccountRoute
   '/_authenticated/settings/appearance': typeof AuthenticatedSettingsAppearanceRoute
   '/_authenticated/settings/display': typeof AuthenticatedSettingsDisplayRoute
   '/_authenticated/settings/notifications': typeof AuthenticatedSettingsNotificationsRoute
+  '/_authenticated/ask-mastic/': typeof AuthenticatedAskMasticIndexRoute
   '/_authenticated/data-sources/': typeof AuthenticatedDataSourcesIndexRoute
   '/_authenticated/data/': typeof AuthenticatedDataIndexRoute
+  '/_authenticated/foresight/': typeof AuthenticatedForesightIndexRoute
   '/_authenticated/model/': typeof AuthenticatedModelIndexRoute
   '/_authenticated/settings/': typeof AuthenticatedSettingsIndexRoute
   '/_authenticated/users/': typeof AuthenticatedUsersIndexRoute
+  '/_authenticated/analytics/eande/mismatch': typeof AuthenticatedAnalyticsEandeMismatchRoute
+  '/_authenticated/analytics/eande/strength': typeof AuthenticatedAnalyticsEandeStrengthRoute
+  '/_authenticated/analytics/eande/supply-demand': typeof AuthenticatedAnalyticsEandeSupplyDemandRoute
+  '/_authenticated/analytics/eande/': typeof AuthenticatedAnalyticsEandeIndexRoute
+  '/_authenticated/analytics/i360/': typeof AuthenticatedAnalyticsI360IndexRoute
+  '/_authenticated/analytics/impak/': typeof AuthenticatedAnalyticsImpakIndexRoute
   '/_authenticated/analytics/mismatch/': typeof AuthenticatedAnalyticsMismatchIndexRoute
+  '/_authenticated/analytics/professional/': typeof AuthenticatedAnalyticsProfessionalIndexRoute
   '/_authenticated/analytics/spm/': typeof AuthenticatedAnalyticsSpmIndexRoute
   '/_authenticated/analytics/supply-demand/': typeof AuthenticatedAnalyticsSupplyDemandIndexRoute
   '/_authenticated/simulator/interventions/': typeof AuthenticatedSimulatorInterventionsIndexRoute
@@ -254,17 +353,27 @@ export interface FileRouteTypes {
     | '/404'
     | '/500'
     | '/503'
+    | '/analytics/eande'
     | '/errors/$error'
     | '/settings/account'
     | '/settings/appearance'
     | '/settings/display'
     | '/settings/notifications'
+    | '/ask-mastic/'
     | '/data-sources/'
     | '/data/'
+    | '/foresight/'
     | '/model/'
     | '/settings/'
     | '/users/'
+    | '/analytics/eande/mismatch'
+    | '/analytics/eande/strength'
+    | '/analytics/eande/supply-demand'
+    | '/analytics/eande/'
+    | '/analytics/i360/'
+    | '/analytics/impak/'
     | '/analytics/mismatch/'
+    | '/analytics/professional/'
     | '/analytics/spm/'
     | '/analytics/supply-demand/'
     | '/simulator/interventions/'
@@ -283,12 +392,21 @@ export interface FileRouteTypes {
     | '/settings/appearance'
     | '/settings/display'
     | '/settings/notifications'
+    | '/ask-mastic'
     | '/data-sources'
     | '/data'
+    | '/foresight'
     | '/model'
     | '/settings'
     | '/users'
+    | '/analytics/eande/mismatch'
+    | '/analytics/eande/strength'
+    | '/analytics/eande/supply-demand'
+    | '/analytics/eande'
+    | '/analytics/i360'
+    | '/analytics/impak'
     | '/analytics/mismatch'
+    | '/analytics/professional'
     | '/analytics/spm'
     | '/analytics/supply-demand'
     | '/simulator/interventions'
@@ -304,17 +422,27 @@ export interface FileRouteTypes {
     | '/(errors)/500'
     | '/(errors)/503'
     | '/_authenticated/'
+    | '/_authenticated/analytics/eande'
     | '/_authenticated/errors/$error'
     | '/_authenticated/settings/account'
     | '/_authenticated/settings/appearance'
     | '/_authenticated/settings/display'
     | '/_authenticated/settings/notifications'
+    | '/_authenticated/ask-mastic/'
     | '/_authenticated/data-sources/'
     | '/_authenticated/data/'
+    | '/_authenticated/foresight/'
     | '/_authenticated/model/'
     | '/_authenticated/settings/'
     | '/_authenticated/users/'
+    | '/_authenticated/analytics/eande/mismatch'
+    | '/_authenticated/analytics/eande/strength'
+    | '/_authenticated/analytics/eande/supply-demand'
+    | '/_authenticated/analytics/eande/'
+    | '/_authenticated/analytics/i360/'
+    | '/_authenticated/analytics/impak/'
     | '/_authenticated/analytics/mismatch/'
+    | '/_authenticated/analytics/professional/'
     | '/_authenticated/analytics/spm/'
     | '/_authenticated/analytics/supply-demand/'
     | '/_authenticated/simulator/interventions/'
@@ -417,6 +545,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedModelIndexRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/foresight/': {
+      id: '/_authenticated/foresight/'
+      path: '/foresight'
+      fullPath: '/foresight/'
+      preLoaderRoute: typeof AuthenticatedForesightIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/data/': {
       id: '/_authenticated/data/'
       path: '/data'
@@ -429,6 +564,13 @@ declare module '@tanstack/react-router' {
       path: '/data-sources'
       fullPath: '/data-sources/'
       preLoaderRoute: typeof AuthenticatedDataSourcesIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/ask-mastic/': {
+      id: '/_authenticated/ask-mastic/'
+      path: '/ask-mastic'
+      fullPath: '/ask-mastic/'
+      preLoaderRoute: typeof AuthenticatedAskMasticIndexRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/settings/notifications': {
@@ -466,6 +608,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedErrorsErrorRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/analytics/eande': {
+      id: '/_authenticated/analytics/eande'
+      path: '/analytics/eande'
+      fullPath: '/analytics/eande'
+      preLoaderRoute: typeof AuthenticatedAnalyticsEandeRouteRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/simulator/scenario/': {
       id: '/_authenticated/simulator/scenario/'
       path: '/simulator/scenario'
@@ -494,12 +643,61 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAnalyticsSpmIndexRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/analytics/professional/': {
+      id: '/_authenticated/analytics/professional/'
+      path: '/analytics/professional'
+      fullPath: '/analytics/professional/'
+      preLoaderRoute: typeof AuthenticatedAnalyticsProfessionalIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/analytics/mismatch/': {
       id: '/_authenticated/analytics/mismatch/'
       path: '/analytics/mismatch'
       fullPath: '/analytics/mismatch/'
       preLoaderRoute: typeof AuthenticatedAnalyticsMismatchIndexRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/analytics/impak/': {
+      id: '/_authenticated/analytics/impak/'
+      path: '/analytics/impak'
+      fullPath: '/analytics/impak/'
+      preLoaderRoute: typeof AuthenticatedAnalyticsImpakIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/analytics/i360/': {
+      id: '/_authenticated/analytics/i360/'
+      path: '/analytics/i360'
+      fullPath: '/analytics/i360/'
+      preLoaderRoute: typeof AuthenticatedAnalyticsI360IndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/analytics/eande/': {
+      id: '/_authenticated/analytics/eande/'
+      path: '/'
+      fullPath: '/analytics/eande/'
+      preLoaderRoute: typeof AuthenticatedAnalyticsEandeIndexRouteImport
+      parentRoute: typeof AuthenticatedAnalyticsEandeRouteRoute
+    }
+    '/_authenticated/analytics/eande/supply-demand': {
+      id: '/_authenticated/analytics/eande/supply-demand'
+      path: '/supply-demand'
+      fullPath: '/analytics/eande/supply-demand'
+      preLoaderRoute: typeof AuthenticatedAnalyticsEandeSupplyDemandRouteImport
+      parentRoute: typeof AuthenticatedAnalyticsEandeRouteRoute
+    }
+    '/_authenticated/analytics/eande/strength': {
+      id: '/_authenticated/analytics/eande/strength'
+      path: '/strength'
+      fullPath: '/analytics/eande/strength'
+      preLoaderRoute: typeof AuthenticatedAnalyticsEandeStrengthRouteImport
+      parentRoute: typeof AuthenticatedAnalyticsEandeRouteRoute
+    }
+    '/_authenticated/analytics/eande/mismatch': {
+      id: '/_authenticated/analytics/eande/mismatch'
+      path: '/mismatch'
+      fullPath: '/analytics/eande/mismatch'
+      preLoaderRoute: typeof AuthenticatedAnalyticsEandeMismatchRouteImport
+      parentRoute: typeof AuthenticatedAnalyticsEandeRouteRoute
     }
   }
 }
@@ -527,15 +725,45 @@ const AuthenticatedSettingsRouteRouteWithChildren =
     AuthenticatedSettingsRouteRouteChildren,
   )
 
+interface AuthenticatedAnalyticsEandeRouteRouteChildren {
+  AuthenticatedAnalyticsEandeMismatchRoute: typeof AuthenticatedAnalyticsEandeMismatchRoute
+  AuthenticatedAnalyticsEandeStrengthRoute: typeof AuthenticatedAnalyticsEandeStrengthRoute
+  AuthenticatedAnalyticsEandeSupplyDemandRoute: typeof AuthenticatedAnalyticsEandeSupplyDemandRoute
+  AuthenticatedAnalyticsEandeIndexRoute: typeof AuthenticatedAnalyticsEandeIndexRoute
+}
+
+const AuthenticatedAnalyticsEandeRouteRouteChildren: AuthenticatedAnalyticsEandeRouteRouteChildren =
+  {
+    AuthenticatedAnalyticsEandeMismatchRoute:
+      AuthenticatedAnalyticsEandeMismatchRoute,
+    AuthenticatedAnalyticsEandeStrengthRoute:
+      AuthenticatedAnalyticsEandeStrengthRoute,
+    AuthenticatedAnalyticsEandeSupplyDemandRoute:
+      AuthenticatedAnalyticsEandeSupplyDemandRoute,
+    AuthenticatedAnalyticsEandeIndexRoute:
+      AuthenticatedAnalyticsEandeIndexRoute,
+  }
+
+const AuthenticatedAnalyticsEandeRouteRouteWithChildren =
+  AuthenticatedAnalyticsEandeRouteRoute._addFileChildren(
+    AuthenticatedAnalyticsEandeRouteRouteChildren,
+  )
+
 interface AuthenticatedRouteRouteChildren {
   AuthenticatedSettingsRouteRoute: typeof AuthenticatedSettingsRouteRouteWithChildren
   AuthenticatedIndexRoute: typeof AuthenticatedIndexRoute
+  AuthenticatedAnalyticsEandeRouteRoute: typeof AuthenticatedAnalyticsEandeRouteRouteWithChildren
   AuthenticatedErrorsErrorRoute: typeof AuthenticatedErrorsErrorRoute
+  AuthenticatedAskMasticIndexRoute: typeof AuthenticatedAskMasticIndexRoute
   AuthenticatedDataSourcesIndexRoute: typeof AuthenticatedDataSourcesIndexRoute
   AuthenticatedDataIndexRoute: typeof AuthenticatedDataIndexRoute
+  AuthenticatedForesightIndexRoute: typeof AuthenticatedForesightIndexRoute
   AuthenticatedModelIndexRoute: typeof AuthenticatedModelIndexRoute
   AuthenticatedUsersIndexRoute: typeof AuthenticatedUsersIndexRoute
+  AuthenticatedAnalyticsI360IndexRoute: typeof AuthenticatedAnalyticsI360IndexRoute
+  AuthenticatedAnalyticsImpakIndexRoute: typeof AuthenticatedAnalyticsImpakIndexRoute
   AuthenticatedAnalyticsMismatchIndexRoute: typeof AuthenticatedAnalyticsMismatchIndexRoute
+  AuthenticatedAnalyticsProfessionalIndexRoute: typeof AuthenticatedAnalyticsProfessionalIndexRoute
   AuthenticatedAnalyticsSpmIndexRoute: typeof AuthenticatedAnalyticsSpmIndexRoute
   AuthenticatedAnalyticsSupplyDemandIndexRoute: typeof AuthenticatedAnalyticsSupplyDemandIndexRoute
   AuthenticatedSimulatorInterventionsIndexRoute: typeof AuthenticatedSimulatorInterventionsIndexRoute
@@ -545,13 +773,21 @@ interface AuthenticatedRouteRouteChildren {
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedSettingsRouteRoute: AuthenticatedSettingsRouteRouteWithChildren,
   AuthenticatedIndexRoute: AuthenticatedIndexRoute,
+  AuthenticatedAnalyticsEandeRouteRoute:
+    AuthenticatedAnalyticsEandeRouteRouteWithChildren,
   AuthenticatedErrorsErrorRoute: AuthenticatedErrorsErrorRoute,
+  AuthenticatedAskMasticIndexRoute: AuthenticatedAskMasticIndexRoute,
   AuthenticatedDataSourcesIndexRoute: AuthenticatedDataSourcesIndexRoute,
   AuthenticatedDataIndexRoute: AuthenticatedDataIndexRoute,
+  AuthenticatedForesightIndexRoute: AuthenticatedForesightIndexRoute,
   AuthenticatedModelIndexRoute: AuthenticatedModelIndexRoute,
   AuthenticatedUsersIndexRoute: AuthenticatedUsersIndexRoute,
+  AuthenticatedAnalyticsI360IndexRoute: AuthenticatedAnalyticsI360IndexRoute,
+  AuthenticatedAnalyticsImpakIndexRoute: AuthenticatedAnalyticsImpakIndexRoute,
   AuthenticatedAnalyticsMismatchIndexRoute:
     AuthenticatedAnalyticsMismatchIndexRoute,
+  AuthenticatedAnalyticsProfessionalIndexRoute:
+    AuthenticatedAnalyticsProfessionalIndexRoute,
   AuthenticatedAnalyticsSpmIndexRoute: AuthenticatedAnalyticsSpmIndexRoute,
   AuthenticatedAnalyticsSupplyDemandIndexRoute:
     AuthenticatedAnalyticsSupplyDemandIndexRoute,

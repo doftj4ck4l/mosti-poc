@@ -107,3 +107,24 @@
   border-top: 1px solid rgb(197 219 255 / 14%);
 }
 
+
+/* ===== Print-friendly views ===== */
+@media print {
+  [data-sidebar='sidebar'],
+  [data-sidebar='trigger'],
+  [data-sidebar='rail'],
+  header,
+  [data-sonner-toaster] {
+    display: none !important;
+  }
+  main {
+    padding: 0 !important;
+    max-width: none !important;
+  }
+  body {
+    background: white !important;
+  }
+  .print\:hidden {
+    display: none !important;
+  }
+}

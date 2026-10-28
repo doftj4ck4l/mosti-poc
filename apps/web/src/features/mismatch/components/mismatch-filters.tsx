@@ -1,5 +1,3 @@
-import { useCallback } from 'react'
-import { getRouteApi } from '@tanstack/react-router'
 import {
   Select,
   SelectContent,
@@ -19,24 +17,19 @@ import type {
   MismatchScope,
 } from '@/lib/engine/mismatch-types'
 
-const routeApi = getRouteApi('/_authenticated/analytics/mismatch/')
+interface MismatchFiltersProps {
+  scope: MismatchScope
+  grp: MismatchGroup
+  measure: MismatchMeasure
+  onChange: (patch: Partial<{ scope: MismatchScope; grp: MismatchGroup; measure: MismatchMeasure }>) => void
+}
 
-export function MismatchFilters() {
-  const search = routeApi.useSearch()
-  const navigate = routeApi.useNavigate()
-
-  const update = useCallback(
-    (patch: Partial<{ scope: MismatchScope; grp: MismatchGroup; measure: MismatchMeasure }>) => {
-      void navigate({ search: (prev) => ({ ...prev, ...patch }) })
-    },
-    [navigate]
-  )
-
+export function MismatchFilters({ scope, grp, measure, onChange }: MismatchFiltersProps) {
   return (
     <div className='flex flex-wrap items-center gap-3'>
       <div className='flex items-center gap-2'>
         <span className='text-sm text-muted-foreground'>Skop</span>
-        <Select value={search.scope} onValueChange={(v) => update({ scope: v as MismatchScope })}>
+        <Select value={scope} onValueChange={(v) => onChange({ scope: v as MismatchScope })}>
           <SelectTrigger className='w-[180px]'>
             <SelectValue />
           </SelectTrigger>
@@ -51,7 +44,7 @@ export function MismatchFilters() {
       </div>
       <div className='flex items-center gap-2'>
         <span className='text-sm text-muted-foreground'>Kumpulan</span>
-        <Select value={search.grp} onValueChange={(v) => update({ grp: v as MismatchGroup })}>
+        <Select value={grp} onValueChange={(v) => onChange({ grp: v as MismatchGroup })}>
           <SelectTrigger className='w-[180px]'>
             <SelectValue />
           </SelectTrigger>
@@ -66,10 +59,7 @@ export function MismatchFilters() {
       </div>
       <div className='flex items-center gap-2'>
         <span className='text-sm text-muted-foreground'>Ukuran</span>
-        <Select
-          value={search.measure}
-          onValueChange={(v) => update({ measure: v as MismatchMeasure })}
-        >
+        <Select value={measure} onValueChange={(v) => onChange({ measure: v as MismatchMeasure })}>
           <SelectTrigger className='w-[180px]'>
             <SelectValue />
           </SelectTrigger>
@@ -85,7 +75,7 @@ export function MismatchFilters() {
       <Button
         variant='ghost'
         size='sm'
-        onClick={() => update({ scope: 'overall', grp: 'all', measure: 'ap' })}
+        onClick={() => onChange({ scope: 'overall', grp: 'all', measure: 'ap' })}
       >
         Reset
       </Button>
